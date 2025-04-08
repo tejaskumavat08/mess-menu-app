@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaj Ka Menu</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        header {
+            background-image: url('your-image.jpg'); /* Replace with the actual image path */
+            background-size: cover;
+            background-position: center;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        header h1, header .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mess {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            transition: transform 0.2s ease;
+        }
+
+        .mess:hover {
+            transform: translateY(-5px);
+        }
+
+        .mess h3 {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .menu-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .mess p {
+            font-size: 1rem;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .last-updated {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        #searchBox {
+            width: 90%;
+            max-width: 500px;
+            padding: 10px 15px;
+            margin: 20px auto;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .meal-section {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .meal-section:hover {
+            transform: scale(1.01);
+        }
+
+        .meal-section h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .menu-img {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .mess {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 20px;
+            background: #f7f7f7;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <header style="background-image: url('/Images/banner.jpg'); background-size: cover; background-position: center; padding: 40px 20px; color: white; text-align: center;">
+        <h1>Aaj Ka Menu</h1>
+        <a href="login.html" class="btn">Mess Owner Login</a>
+    </header>
+    
+    <main>
+        <h2>Today's Menus</h2>
+
+        <!-- Search Bar -->
+        <input type="text" id="searchBox" placeholder="Search Mess by Name..." oninput="filterMess()">
+
+        <div id="messList">
+            <!-- Mess menus will be loaded dynamically here -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadMessMenus();
+        });
+
+        function loadMessMenus() {
+            let messData = JSON.parse(localStorage.getItem("messData")) || [];
+            let messListDiv = document.getElementById("messList");
+
+            if (messData.length === 0) {
+                messListDiv.innerHTML = "<p>No menus available. Mess owners, please update your menu.</p>";
+            } else {
+                messListDiv.innerHTML = ""; // Clear old content
+                messData.forEach(mess => {
+                    // Skip "College Katta"
+                    if (mess.messName.toLowerCase() === "college katta") return;
+
+                    let messDiv = document.createElement("div");
+                    messDiv.classList.add("mess");
+                    messDiv.setAttribute("data-mess-name", mess.messName.toLowerCase());
+
+                    let lunchImageHTML = mess.menu.lunchImage ? `<img src="${mess.menu.lunchImage}" alt="Lunch Image" class="menu-img">` : '';
+                    let dinnerImageHTML = mess.menu.dinnerImage ? `<img src="${mess.menu.dinnerImage}" alt="Dinner Image" class="menu-img">` : '';
+
+                    messDiv.innerHTML = `
+                        <h3>${mess.messName}</h3>
+
+                        <div class="meal-section">
+                            <h4>🍱 Lunch</h4>
+                            ${lunchImageHTML}
+                            <p>${mess.menu.lunch}</p>
+                        </div>
+
+                        <div class="meal-section">
+                            <h4>🍽️ Dinner</h4>
+                            ${dinnerImageHTML}
+                            <p>${mess.menu.dinner}</p>
+                        </div>
+
+                        <p class="last-updated"><em>Last Updated: ${mess.menu.lastUpdated}</em></p>
+                    `;
+
+                    messListDiv.appendChild(messDiv);
+                });
+            }
+        }
+
+        function filterMess() {
+            let searchValue = document.getElementById("searchBox").value.toLowerCase();
+            let messDivs = document.querySelectorAll("#messList .mess");
+
+            messDivs.forEach(div => {
+                let messName = div.getAttribute("data-mess-name");
+                if (messName.includes(searchValue)) {
+                    div.style.display = "block";
+                } else {
+                    div.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
