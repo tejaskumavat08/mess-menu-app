@@ -1,4 +1,4 @@
-# 🍽️ Mess Menu Web App
+# 🍽️ Food Mess Menu Web App
 
 A simple and responsive web application to display the weekly mess menu for a hostel or college mess. Built to help students easily check their daily meals and plan accordingly.
 
