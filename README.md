@@ -10,6 +10,9 @@ A simple and responsive web application to display the weekly mess menu for a ho
 - 🔍 Clean and easy navigation
 - ☁️ Optional hosting-ready
 
+## Drawback
+ Note - This Food Mess Menu Web App is properly run on PC not on your Andriod Phone. If you want to update the meal of Lunch and Dinner it will not update in index.html file. The Drawback is overcome in future. Stay connected with me. 
+
 
 ## 🛠️ Tech Stack
 
