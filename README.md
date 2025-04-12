@@ -17,7 +17,7 @@ A simple and responsive web application to display the weekly mess menu for a ho
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript  
-  *(you can use React, Vue, etc. — modify this if you used a framework)*
+  * (you can use React, Vue, etc. — modify this if you used a framework)*
 - **Backend:** Not required / Node.js (if applicable)
 - **Deployment:** GitHub Pages / Netlify / Vercel (optional)
 
