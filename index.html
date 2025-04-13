@@ -17,6 +17,7 @@
             position: relative;
         }
 
+        
         header::after {
             content: "";
             position: absolute;
@@ -137,6 +138,7 @@
         </div>
     </main>
 
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             loadMessMenus();
@@ -184,6 +186,7 @@
             }
         }
 
+        
         function filterMess() {
             let searchValue = document.getElementById("searchBox").value.toLowerCase();
             let messDivs = document.querySelectorAll("#messList .mess");
