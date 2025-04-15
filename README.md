@@ -1,4 +1,4 @@
-# 🍽️ Food Mess Menu Web App 
+# 🍽️ Food Mess Menu Web App  
 
 A simple and responsive web application to display the weekly mess menu for a hostel or college mess able to see Mess Menu remotelessly . Built to help students easily check their daily meals and plan accordingly.
 
@@ -8,7 +8,7 @@ A simple and responsive web application to display the weekly mess menu for a ho
 - 🍛 Categorized meals (Breakfast, Lunch, Snacks, Dinner)
 - 📱 Mobile-responsive design
 - 🔍 Clean and easy navigation
-- ☁️ Optional hosting-ready
+- ☁️ Optional hosting-ready  
 
 ## ⚠️ Drawback
  Note - This Food Mess Menu Web App is properly run on PC not on your Andriod Phone. If you want to update the meal of Lunch and Dinner it will not update in index.html file. The Drawback is overcome in future. Stay connected with me. 
