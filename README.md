@@ -23,7 +23,7 @@ A simple and responsive web application to display the weekly mess menu for a ho
 
 
 ## 📁 Project Structure
-
+ 
 ```
 mess-menu-web-app/
 ├── index.html
